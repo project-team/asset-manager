@@ -1,13 +1,26 @@
 var mongojs = require('mongojs')
-
+var Joi = require('joi')
 
 module.exports = function(dbname, collection){
 
 	var db = mongojs(dbname)
 	var asset = db.collection(collection)
 
+	var schema = Joi.object().keys({
+    name: Joi.string().alphanum().min(3).max(30).required(),
+    status: Joi.string().alphanum().required(),
+	});
+
+
 	return {
 		put: function(obj, cb){
+
+
+			var result = Joi.validate(obj, schema)
+
+			if(result.error != null)
+				return cb(result.error,null);
+
 
 
 			asset.findAndModify({
@@ -21,7 +34,14 @@ module.exports = function(dbname, collection){
 
 		},
 		get: function(query,cb){
+
+
+			if(query == null || query === undefined)
+				return cb({error:"Must Provide a query"},null);
+
+
 			asset.findOne(query,cb);
+
 		},
 		close: function(){
 			db.close();
