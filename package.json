@@ -19,6 +19,7 @@
   "dependencies": {
     "bunyan": "^1.4.0",
     "chai": "^3.0.0",
+    "joi": "^6.5.0",
     "mocha": "^2.2.5",
     "mongojs": "^1.0.2"
   }
