@@ -19,8 +19,7 @@
   "dependencies": {
     "bunyan": "^1.4.0",
     "chai": "^3.0.0",
-    "express": "^4.13.0",
-    "mongojs": "^1.0.2",
-    "nodeunit": "^0.9.1"
+    "mocha": "^2.2.5",
+    "mongojs": "^1.0.2"
   }
 }
