@@ -1,0 +1,19 @@
+{
+  "name": "@marcoleo/asset-manager",
+  "version": "0.0.1",
+  "description": "Asset Manager Corso NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/project-team/asset-manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/project-team/asset-manager/issues"
+  },
+  "homepage": "https://github.com/project-team/asset-manager#readme"
+}
