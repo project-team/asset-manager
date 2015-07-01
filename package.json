@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/project-team/asset-manager/issues"
   },
-  "homepage": "https://github.com/project-team/asset-manager#readme"
+  "homepage": "https://github.com/project-team/asset-manager#readme",
+  "dependencies": {
+    "bunyan": "^1.4.0",
+    "chai": "^3.0.0",
+    "express": "^4.13.0",
+    "mongojs": "^1.0.2",
+    "nodeunit": "^0.9.1"
+  }
 }
