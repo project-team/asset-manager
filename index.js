@@ -18,8 +18,8 @@ module.exports = function(dbname, collection){
 
 			var result = Joi.validate(obj, schema)
 
-			if(result.err != null)
-				return cb(result.err,null);
+			if(result.error != null)
+				return cb(result.error,null);
 
 
 
