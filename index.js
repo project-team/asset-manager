@@ -15,6 +15,10 @@ module.exports = function(dbname, collection){
 	return {
 		put: function(obj, cb){
 
+			if(obj._id){
+				obj._id = "";
+			}
+
 
 			var result = Joi.validate(obj, schema)
 
@@ -24,7 +28,7 @@ module.exports = function(dbname, collection){
 
 
 			asset.findAndModify({
-			    query: obj ,
+			    query: mongojs.ObjectId(obj._id) ,
 			    update: { $set: obj },
 			    new: true,
 					upsert:true

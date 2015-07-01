@@ -19,16 +19,4 @@ describe("asset-manager", function(){
        })
     });  
   });
-
-  it("change status", function(done){    
-    asset_manager.put({name: 'prova', status: 'newstatus'}, function (err, result) {
-      console.log(result)
-      if (err) return done(err)
-       asset_manager.get({name: result.name}, function (err, result2) {
-        if (err) return done(err)
-         assert.deepEqual(result2.status, 'newstatus')
-         done()
-       })
-    });  
-  });
 });
