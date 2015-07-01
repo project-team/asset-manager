@@ -22,5 +22,9 @@
     "joi": "^6.5.0",
     "mocha": "^2.2.5",
     "mongojs": "^1.0.2"
+  },
+  "devDependencies": {
+    "mongo-clean": "^0.1.0",
+    "mongodb": "^2.0.35"
   }
 }
