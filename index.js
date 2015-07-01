@@ -1,41 +1,31 @@
 var mongojs = require('mongojs')
 
+
 module.exports = function(dbname, collection){
+
+	var db = mongojs(dbname)
+	var asset = db.collection(collection)
+
 	return {
-		insert: function(obj){
-			var db = mongojs('test');
-			var mycollection = db.collection(collection);
+		put: function(obj, cb){
 
-			var asset = getDbCollection(dbname, collection);
 
-			db.asset.insert(obj);
-		},
-		changeStatus: function(id, status){
-
-			var asset = getDbCollection(dbname, collection);
-
-			asset.update({id:id}, {status : status}, {multi:true}, function() {
-	    	// the update is complete
+			asset.findAndModify({
+			    query: obj ,
+			    update: { $set: obj },
+			    new: true,
+					upsert:true
+			}, function(err, doc, lastErrorObject) {
+			    cb(err,doc);
 			});
-		},
-		getStatus: function(id){
-			var asset = getDbCollection(dbname, collection);
 
-			// find a document using a native ObjectId
-			asset.findOne({
-			    id:id
-			}, function(err, doc) {
-			    return doc.status;
-			});
+		},
+		get: function(query,cb){
+			asset.findOne(query,cb);
+		},
+		close: function(){
+			db.close();
 		}
+
 	}
-}
-
-function getDbCollection(dbname, collection){
-
-	//TODO gestire errori
-	var db = mongojs(dbname);
-	var mycollection = db.collection(collection);
-
-	return collection;
 }
