@@ -1,12 +1,14 @@
 var mongojs = require('mongojs')
 
 module.exports = function(dbname, collection){
-
 	return {
-		insert: function(asset){
+		insert: function(obj){
+			var db = mongojs('test');
+			var mycollection = db.collection(collection);
+
 			var asset = getDbCollection(dbname, collection);
 
-			asset.insert(asset);
+			db.asset.insert(obj);
 		},
 		changeStatus: function(id, status){
 
@@ -25,11 +27,8 @@ module.exports = function(dbname, collection){
 			}, function(err, doc) {
 			    return doc.status;
 			});
-
-
 		}
 	}
-
 }
 
 function getDbCollection(dbname, collection){
