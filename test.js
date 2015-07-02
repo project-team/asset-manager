@@ -13,7 +13,7 @@ describe("asset-manager", function(){
   })
 
   it("save in db", function(done){    
-    asset_manager.put({name: 'prova', status: 'status'}, function (err, result) {
+    asset_manager.put({name: 'prova222', status: 'status'}, function (err, result) {
       console.log(result)
       if (err) return done(err)
        asset_manager.get({name: result.name, status: result.status}, function (err, result2) {

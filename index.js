@@ -17,17 +17,10 @@ module.exports = function(dbname, collection){
 		},
 		put: function(obj, cb){
 
-			if(obj._id){
-				obj._id = "";
-			}
-
-
 			var result = Joi.validate(obj, schema)
 
 			if(result.error != null)
 				return cb(result.error,null);
-
-
 
 			asset.findAndModify({
 			    query: mongojs.ObjectId(obj._id) ,
