@@ -6,13 +6,15 @@ module.exports = function(dbname, collection){
 	var db = mongojs(dbname)
 	var asset = db.collection(collection)
 
-	var schema = Joi.object().keys({
-    name: Joi.string().alphanum().min(3).max(30).required(),
-    status: Joi.string().alphanum().required(),
-	});
-
+	var schema = {
+		name: Joi.string().alphanum().min(3).max(30).required(),
+   		status: Joi.string().alphanum().required(),
+	};
 
 	return {
+		JoiSchema: function(){
+			return schema;
+		},
 		put: function(obj, cb){
 
 			if(obj._id){
