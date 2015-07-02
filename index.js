@@ -8,7 +8,7 @@ module.exports = function(dbname, collection){
 
 	var schema = {
 		id: Joi.string().alphanum(),
-		name: Joi.string().alphanum().min(3).max(30).required(),
+		name: Joi.string().required(),
    		status: Joi.string().alphanum().required(),
 	};
 
