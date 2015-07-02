@@ -69,6 +69,6 @@ A method to close the connection to Mongo database.
 
 ## Dependencies
 
-Joi for validation
-mongojs for database connection
+Joi for validation<br>
+mongojs for database connection<br>
 mocha for testing
