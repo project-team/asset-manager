@@ -1,6 +1,6 @@
 {
   "name": "@marcoleo/asset-manager",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "Asset Manager Corso NodeJS",
   "main": "index.js",
   "scripts": {

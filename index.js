@@ -44,7 +44,7 @@ module.exports = function(dbname, collection){
 				return cb({error:"Must Provide a query"},null);
 
 
-			asset.findOne(query,cb);
+			asset.find(query,cb);
 
 		},
 		close: function(){
