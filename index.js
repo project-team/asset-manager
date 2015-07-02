@@ -7,6 +7,7 @@ module.exports = function(dbname, collection){
 	var asset = db.collection(collection)
 
 	var schema = {
+		id: Joi.string().alphanum(),
 		name: Joi.string().alphanum().min(3).max(30).required(),
    		status: Joi.string().alphanum().required(),
 	};
@@ -22,14 +23,15 @@ module.exports = function(dbname, collection){
 			if(result.error != null)
 				return cb(result.error,null);
 
-			asset.findAndModify({
-			    query: mongojs.ObjectId(obj._id) ,
-			    update: { $set: obj },
-			    new: true,
-					upsert:true
-			}, function(err, doc, lastErrorObject) {
-			    cb(err,doc);
-			});
+			if(!obj.id){
+				asset.insert(obj, function(err, doc, lastErrorObject) {
+				    cb(err,doc);
+				});
+			} else {
+				asset.update({_id: mongojs.ObjectId(obj.id)}, {$set: {name: obj.name, status: obj.status}}, function(err, doc, lastErrorObject) {
+					asset.findOne({_id: mongojs.ObjectId(obj.id)},cb);
+				});
+			}
 
 		},
 		get: function(query,cb){
