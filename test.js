@@ -3,11 +3,15 @@ var clean = require('mongo-clean')
 var mongodb = require('mongodb')
 var asset_manager = require('./')('corsonode','asset')
 
-clean('mongodb://localhost:27017/corsonode', function(err, db){
-  db.close()
-})
-
 describe("asset-manager", function(){  
+  beforeEach(function(done){
+    clean('mongodb://localhost:27017/corsonode', function(err, db){
+      if (db)
+        db.close()
+      done(err)
+    })
+  })
+
   it("save in db", function(done){    
     asset_manager.put({name: 'prova', status: 'status'}, function (err, result) {
       console.log(result)
